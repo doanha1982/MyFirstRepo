@@ -17,28 +17,14 @@ steps:
   inputs:
     command: 'build'
     projects: '**/MyConsoleAppInGitHub.csproj'
-    arguments: '--configuration Release --no-restore'
+    arguments: '--configuration Release'
     workingDirectory: 'MyConsoleAppInGitHub'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
     projects: '**/MyMSTestConsoleApp.csproj'
     testRunTitle: 'Testing'
-- task: DotNetCoreCLI@2
+- task: PublishPipelineArtifact@0
   inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: '**/MyConsoleAppInGitHub.csproj'
-    arguments: '-c $(BuildConfiguration) -o $(Build.StagingDirectory)/ci-build --no-build'
-    zipAfterPublish: false
-    modifyOutputPath: false
-    workingDirectory: 'MyConsoleAppInGitHub'
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(Build.StagingDirectory)/ci-build'
-    includeRootFolder: false
-    archiveFile: '$(Build.ArtifactStagingDirectory)/MyApp.$(Build.BuildId).zip'
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/MyApp.$(Build.BuildId).zip'
-    ArtifactName: 'MyApp.$(Build.BuildId)'
+    artifactName: 'my.artifact.$(Build.BuildID)'
+    targetPath: 'MyConsoleAppInGitHub/bin/Release/netcoreapp2.0/linux-x64/publish'
