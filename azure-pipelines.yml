@@ -17,8 +17,20 @@ steps:
   inputs:
     command: 'build'
     projects: '**/MyLib/MyLib.csproj'
+    arguments: '--configuration Release'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/MyConsoleAppInGitHub/MyConsoleAppInGitHub.csproj'
+    arguments: '--configuration Release'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
     projects: '**/MyMSTestConsoleApp/MyMSTestConsoleApp.csproj'
     testRunTitle: 'Testing'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: '**/MyConsoleAppInGitHub/MyConsoleAppInGitHub.csproj'
+    arguments: '--configuration Release'
