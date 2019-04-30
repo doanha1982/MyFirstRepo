@@ -33,4 +33,16 @@ steps:
     command: 'publish'
     publishWebProjects: false
     projects: '**/MyConsoleAppInGitHub/MyConsoleAppInGitHub.csproj'
-    arguments: '--configuration Release'
+    arguments: '-c $(BuildConfiguration) -o $(Build.StagingDirectory)/ci-build --no-build'
+    zipAfterPublish: false
+    modifyOutputPath: false
+    workingDirectory: '**/MyConsoleAppInGitHub'
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.StagingDirectory)/ci-build'
+    includeRootFolder: false
+    archiveFile: '$(Build.ArtifactStagingDirectory)/MyApp.$(Build.BuildId).zip'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/MyApp.$(Build.BuildId).zip'
+    ArtifactName: 'MyApp.$(Build.BuildId)'
