@@ -11,18 +11,19 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  publishPath: 'publish'
 
 steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
     projects: '**/MyLib/MyLib.csproj'
-    arguments: '--configuration Release'
+    arguments: '--configuration $(buildConfiguration)'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
     projects: '**/MyConsoleAppInGitHub/MyConsoleAppInGitHub.csproj'
-    arguments: '--configuration Release'
+    arguments: '--configuration $(buildConfiguration)'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
@@ -33,4 +34,9 @@ steps:
     command: 'publish'
     publishWebProjects: false
     projects: '**/MyConsoleAppInGitHub/MyConsoleAppInGitHub.csproj'
-    arguments: '--configuration Release'
+    arguments: '-c $(buildConfiguration) -o $(publishPath)/ --no-build'
+    zipAfterPublish: false
+    workingDirectory: '**/MyConsoleAppInGitHub'
+    # The -c command will tell Azure DevOps to use the buildConfiguration variable. 
+    # By default the variable is set to release but you can change it in "Variables" tab on this page
+    # The -o argument specifies the location of the published output.
