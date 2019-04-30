@@ -16,27 +16,23 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '**/MyLib/MyLib.csproj'
-    arguments: '--configuration Release'
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: '**/MyConsoleAppInGitHub/MyConsoleAppInGitHub.csproj'
-    arguments: '--configuration Release'
+    projects: '**/MyConsoleAppInGitHub.csproj'
+    arguments: '--configuration Release --no-restore'
+    workingDirectory: 'MyConsoleAppInGitHub'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/MyMSTestConsoleApp/MyMSTestConsoleApp.csproj'
+    projects: '**/MyMSTestConsoleApp.csproj'
     testRunTitle: 'Testing'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
     publishWebProjects: false
-    projects: '**/MyConsoleAppInGitHub/MyConsoleAppInGitHub.csproj'
+    projects: '**/MyConsoleAppInGitHub.csproj'
     arguments: '-c $(BuildConfiguration) -o $(Build.StagingDirectory)/ci-build --no-build'
     zipAfterPublish: false
     modifyOutputPath: false
-    workingDirectory: '**/MyConsoleAppInGitHub'
+    workingDirectory: 'MyConsoleAppInGitHub'
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.StagingDirectory)/ci-build'
