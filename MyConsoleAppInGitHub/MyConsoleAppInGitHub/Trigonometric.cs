@@ -7,17 +7,32 @@ namespace MyConsoleAppInGitHub
         public static double eqSide1, eqSide2, eqSide3;
         static void Main(string[] args)
         {
-            Console.Write("Triangle Type Test :-\n----------------------------\n\n");
-            Trigonometric.TrianlgeSidesInput(12, 12, 12);
-            Console.ReadLine();
+            //Console.Write("Triangle Type Test :-\n----------------------------\n\n");
+            //Trigonometric.TrianlgeSidesInput(12, 12, 12);
+            //Console.ReadLine();
 
-            Trigonometric.TrianlgeSidesInput(12, 12, 15);
-            Console.ReadLine();
+            //Trigonometric.TrianlgeSidesInput(12, 12, 15);
+            //Console.ReadLine();
 
-            Trigonometric.TrianlgeSidesInput(12, 20, 25);
-            Console.ReadLine();
+            //Trigonometric.TrianlgeSidesInput(12, 20, 25);
+            //Console.ReadLine();
 
-            SimpleMaths.Sum(123, 4565);
+            //SimpleMaths.Sum(123, 4565);
+            //Console.ReadLine();
+
+            Console.WriteLine("Choose method for execution:");
+            Console.WriteLine("[1]: SUM");
+            Console.WriteLine("[2]: MULTIPLY");
+            string key = Console.ReadLine();
+            switch (key)
+            {
+                case "1":
+                    SimpleMaths.Sum(123, 456);
+                    break;
+                case "2":
+                    SimpleMaths.Multiply(123, 456);
+                    break;
+            }
             Console.ReadLine();
         }
 
@@ -68,6 +83,13 @@ namespace MyConsoleAppInGitHub
             {
                 int total = a + b;
                 Console.WriteLine($"Math.Sum({a} + {b}) = {total}");
+                Console.WriteLine("For Next : Press Enter \n");
+            }
+
+            public static void Multiply(double a, double b)
+            {
+                double result = a * b;
+                Console.WriteLine($"Math.Multiply({a} + {b}) = {result}");
                 Console.WriteLine("For Next : Press Enter \n");
             }
         }
