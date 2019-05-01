@@ -16,6 +16,9 @@ namespace MyConsoleAppInGitHub
 
             Trigonometric.TrianlgeSidesInput(12, 20, 25);
             Console.ReadLine();
+
+            SimpleMaths.Sum(123, 4565);
+            Console.ReadLine();
         }
 
         public static void TrianlgeSidesInput(double side1, double side2, double side3)
@@ -58,6 +61,15 @@ namespace MyConsoleAppInGitHub
                     break;
             }
 
+        }
+
+        internal class SimpleMaths {
+            public static void Sum(int a, int b)
+            {
+                int total = a + b;
+                Console.WriteLine($"Math.Sum({a} + {b}) = {total}");
+                Console.WriteLine("For Next : Press Enter \n");
+            }
         }
     }
 }
