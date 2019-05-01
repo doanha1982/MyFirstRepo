@@ -15,16 +15,33 @@ variables:
 steps:
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'build'
-    projects: '**/MyConsoleAppInGitHub.csproj'
-    arguments: '--configuration Release'
-    workingDirectory: 'MyConsoleAppInGitHub'
+    command: 'restore'
+    projects: '**/*.csproj'
+    
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'test'
-    projects: '**/MyMSTestConsoleApp.csproj'
-    testRunTitle: 'Testing'
-- task: PublishPipelineArtifact@0
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet test $(buildConfiguration)'
   inputs:
-    artifactName: 'my.artifact.$(Build.BuildID)'
-    targetPath: 'MyConsoleAppInGitHub/bin/Release/netcoreapp2.0/linux-x64/publish'
+    command: test
+    projects: '**/*Test/*.csproj'
+    arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish $(buildConfiguration)'
+  inputs:
+    command: publish
+    publishWebProjects: false
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: True
+    projects: '**/MyConsoleAppInGitHub.csproj'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'publish artifacts learning.$(Build.BuildID)'
+  inputs:
+    ArtifactName: 'learning.$(Build.BuildID)'
