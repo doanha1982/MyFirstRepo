@@ -16,15 +16,19 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '**/MyConsoleAppInGitHub.csproj'
+    projects: '**/*.csproj'
     arguments: '--configuration Release'
-    workingDirectory: 'MyConsoleAppInGitHub'
-- task: DotNetCoreCLI@2
+- task: CopyFiles@2
   inputs:
-    command: 'test'
-    projects: '**/MyMSTestConsoleApp.csproj'
-    testRunTitle: 'Testing'
+    Contents: '_buildOutput\**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishPipelineArtifact@0
   inputs:
-    artifactName: 'my.artifact.$(Build.BuildID)'
-    targetPath: 'MyConsoleAppInGitHub/Output'
+    artifactName: 'mybuild.$(Build.BuidNumber)'
+    targetPath: '$(Build.ArtifactStagingDirectory)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    modifyOutputPath: false
