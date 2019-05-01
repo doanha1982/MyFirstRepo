@@ -23,6 +23,7 @@ namespace MyConsoleAppInGitHub
             Console.WriteLine("Choose method for execution:");
             Console.WriteLine("[1]: SUM");
             Console.WriteLine("[2]: MULTIPLY");
+            Console.WriteLine("[3]: ADDITION");
             string key = Console.ReadLine();
             switch (key)
             {
@@ -31,6 +32,9 @@ namespace MyConsoleAppInGitHub
                     break;
                 case "2":
                     SimpleMaths.Multiply(123, 456);
+                    break;
+                case "3":
+                    SimpleMaths.Add(123, 456);
                     break;
             }
             Console.ReadLine();
@@ -90,6 +94,13 @@ namespace MyConsoleAppInGitHub
             {
                 double result = a * b;
                 Console.WriteLine($"Math.Multiply({a} + {b}) = {result}");
+                Console.WriteLine("For Next : Press Enter \n");
+            }
+
+            public static void Add(double a, double b)
+            {
+                double result = a + b;
+                Console.WriteLine($"Math.Add({a} + {b}) = {result}");
                 Console.WriteLine("For Next : Press Enter \n");
             }
         }
