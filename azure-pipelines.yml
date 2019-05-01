@@ -27,4 +27,4 @@ steps:
 - task: PublishPipelineArtifact@0
   inputs:
     artifactName: 'my.artifact.$(Build.BuildID)'
-    targetPath: 'MyConsoleAppInGitHub/bin/Release/netcoreapp2.0/linux-x64/publish'
+    targetPath: 'MyConsoleAppInGitHub/Output'
