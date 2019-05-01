@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyConsoleAppInGitHub", "MyConsoleAppInGitHub\MyConsoleAppInGitHub.csproj", "{64E70D04-8F7D-4AAF-9764-45F1C1E234D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConsoleAppInGitHub", "MyConsoleAppInGitHub\MyConsoleAppInGitHub.csproj", "{64E70D04-8F7D-4AAF-9764-45F1C1E234D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLib", "MyLib\MyLib.csproj", "{4D8B946B-CE06-4395-81F1-16308F05E8F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyLib", "MyLib\MyLib.csproj", "{4D8B946B-CE06-4395-81F1-16308F05E8F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMSTest", "MyMSTest\MyMSTest.csproj", "{5DD5FEFB-3862-4DA9-A10B-577F6CBD57F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMSTest", "MyMSTest\MyMSTest.csproj", "{5DD5FEFB-3862-4DA9-A10B-577F6CBD57F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMSTestFollowTDD", "MyMSTestFollowTDD\MyMSTestFollowTDD.csproj", "{A0EB2AFB-7649-448F-9DCD-A950933D088A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMSTestFollowTDD", "MyMSTestFollowTDD\MyMSTestFollowTDD.csproj", "{A0EB2AFB-7649-448F-9DCD-A950933D088A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLibFollowTDD", "MyLibFollowTDD\MyLibFollowTDD.csproj", "{48195764-000B-4762-9409-D922CED3607F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyLibFollowTDD", "MyLibFollowTDD\MyLibFollowTDD.csproj", "{48195764-000B-4762-9409-D922CED3607F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMSTestConsoleApp", "MyMSTestConsoleApp\MyMSTestConsoleApp.csproj", "{8BED9557-482B-4128-A4B6-D3B39FBF0BC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMSTestConsoleApp", "MyMSTestConsoleApp\MyMSTestConsoleApp.csproj", "{8BED9557-482B-4128-A4B6-D3B39FBF0BC9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Publish", "Publish", "{AF5D50D7-BAB2-4B63-B418-9197451C6FAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
