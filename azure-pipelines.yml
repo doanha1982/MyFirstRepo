@@ -15,11 +15,13 @@ variables:
 
 steps:
 - task: DotNetCoreCLI@2
+  displayName: 'Restore resource'
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
     
 - task: DotNetCoreCLI@2
+  displayName: 'Building application'
   inputs:
     command: 'build'
     projects: '**/*.csproj'
@@ -43,6 +45,7 @@ steps:
     projects: '**/MyConsoleAppInGitHub.csproj'
 
 - task: PublishBuildArtifacts@1
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   displayName: 'publish artifacts learning.$(Build.BuildID)'
   inputs:
     ArtifactName: 'learning.$(Build.BuildID)'
