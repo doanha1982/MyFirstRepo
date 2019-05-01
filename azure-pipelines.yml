@@ -22,10 +22,9 @@ steps:
   inputs:
     Contents: '**/MyConsoleAppInGitHub/bin/Release/netcoreapp2.2/*'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-- task: PublishPipelineArtifact@0
+- task: PublishBuildArtifacts@1
   inputs:
-    artifactName: 'mybuild.$(Build.BuidNumber)'
-    targetPath: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'mybuild.$(Build.BuildNumber)'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
