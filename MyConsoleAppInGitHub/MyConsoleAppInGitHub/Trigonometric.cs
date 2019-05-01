@@ -24,6 +24,7 @@ namespace MyConsoleAppInGitHub
             Console.WriteLine("[1]: SUM");
             Console.WriteLine("[2]: MULTIPLY");
             Console.WriteLine("[3]: ADDITION");
+            Console.WriteLine("[4]: SUBTRACTION");
             string key = Console.ReadLine();
             switch (key)
             {
@@ -35,6 +36,9 @@ namespace MyConsoleAppInGitHub
                     break;
                 case "3":
                     SimpleMaths.Add(123, 456);
+                    break;
+                case "4":
+                    SimpleMaths.Substract(456, 123);
                     break;
             }
             Console.ReadLine();
@@ -93,7 +97,7 @@ namespace MyConsoleAppInGitHub
             public static void Multiply(double a, double b)
             {
                 double result = a * b;
-                Console.WriteLine($"Math.Multiply({a} + {b}) = {result}");
+                Console.WriteLine($"Math.Multiply({a} * {b}) = {result}");
                 Console.WriteLine("For Next : Press Enter \n");
             }
 
@@ -101,6 +105,13 @@ namespace MyConsoleAppInGitHub
             {
                 double result = a + b;
                 Console.WriteLine($"Math.Add({a} + {b}) = {result}");
+                Console.WriteLine("For Next : Press Enter \n");
+            }
+
+            public static void Substract(double a, double b)
+            {
+                double result = a - b;
+                Console.WriteLine($"Math.Subtract({a} - {b}) = {result}");
                 Console.WriteLine("For Next : Press Enter \n");
             }
         }
