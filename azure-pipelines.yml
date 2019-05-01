@@ -24,11 +24,11 @@ steps:
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
-    ArtifactName: 'mybuild.$(Build.BuildNumber)'
+    ArtifactName: 'mybuild.$(Build.BuildID)'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
-    publishWebProjects: false
+    publishWebProjects: true
+    projects: '**/MyConsoleAppInGitHub.csproj'
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     modifyOutputPath: false
-    zipAfterPublish: true
