@@ -20,7 +20,7 @@ steps:
     arguments: '--configuration Release'
 - task: CopyFiles@2
   inputs:
-    Contents: '_buildOutput\**'
+    Contents: '**/MyConsoleAppInGitHub/bin/Release/netcoreapp2.2/*'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishPipelineArtifact@0
   inputs:
